@@ -6,6 +6,7 @@
 <title>Чашка кофе — кофе с собой в Сургуте</title>
 <meta name="description" content="Чашка кофе — кофе с собой на ул. Рыбников 5, Сургут. Кофе, лимонады, бабл-ти, молочные коктейли, десерты.">
 <link rel="stylesheet" href="style.css">
+<script src="assets/js/menu-filter.js" defer></script>
 </head>
 <body>
 
@@ -28,14 +29,14 @@
   <div class="container hero__inner">
     <img src="assets/img/logo.jpg" alt="Чашка кофе" class="hero__logo">
     <h1 class="hero__slogan">Кофе с собой —<br>ваш спутник прогулок</h1>
-    <p class="hero__address">г. Сургут, ул. Рыбников, д. 5 · набережная у сквера Речников</p>
+    <p class="hero__address"><a href="https://yandex.ru/maps/?rtext=~г.%20Сургут,%20ул.%20Рыбников,%20д.%205,%20набережная%20Олега%20Марчука" target="_blank" rel="noopener" class="address-link">г. Сургут, ул. Рыбников, д. 5 · набережная Олега Марчука</a></p>
     <div class="hero__hours">
       <span>Пн–Чт: 11:00–23:00</span>
       <span>Пт–Вс: 10:00–01:00</span>
     </div>
     <div class="hero__buttons">
       <a href="#menu" class="btn btn--accent">Смотреть меню</a>
-      <a href="https://yandex.ru/maps/?text=Сургут%20ул.%20Рыбников%205%20Чашка%20кофе" target="_blank" rel="noopener" class="btn btn--outline">Маршрут на карте</a>
+      <a href="https://yandex.ru/maps/?rtext=~г.%20Сургут,%20ул.%20Рыбников,%20д.%205,%20набережная%20Олега%20Марчука" target="_blank" rel="noopener" class="btn btn--outline">Маршрут на карте</a>
     </div>
   </div>
 </section>
@@ -50,7 +51,7 @@
       <p class="about__mission">Мы заряжаем Сургут энергией, вдохновляем на большие цели и меняем вечерние традиции
          города к лучшему. Наш зал — это набережная под открытым небом, где в любую погоду и допоздна мы дарим вам
          свободу и безупречный вкус любимых напитков.</p>
-      <p>Кофейня формата «кофе с собой» у сквера Речников. Без посадочных мест — зато быстро, вкусно и всегда по
+      <p>Кофейня формата «кофе с собой» на набережной Олега Марчука. Без посадочных мест — зато быстро, вкусно и всегда по
          пути на прогулку: эспрессо-тоники, лимонады, бабл-ти, молочные коктейли и десерты.</p>
     </div>
   </div>
@@ -60,43 +61,206 @@
   <div class="container">
     <h2>Меню</h2>
 
-    <h3 class="menu__subtitle">Десерты</h3>
-    <div class="menu__intro">
-      <ul class="menu__list">
-        <li><span>Донат</span><span class="price">130 ₽</span></li>
-        <li><span>Бельгийская вафля</span><span class="price">120 ₽</span></li>
-        <li><span>Кукис</span><span class="price">120 ₽</span></li>
-        <li><span>Маффин</span><span class="price">110 ₽</span></li>
-      </ul>
-      <img class="menu__intro-photo" src="assets/img/desserts.jpg" alt="Десерты «Чашка кофе»: донат, бельгийская вафля, кукис, маффин">
+    <div class="menu__tabs">
+      <button type="button" class="menu__tab is-active" aria-pressed="true" data-filter="all">Все</button>
+      <button type="button" class="menu__tab" aria-pressed="false" data-filter="classic">Классика</button>
+      <button type="button" class="menu__tab" aria-pressed="false" data-filter="author">Напитки от автора</button>
+      <button type="button" class="menu__tab" aria-pressed="false" data-filter="tea">Чай</button>
+      <button type="button" class="menu__tab" aria-pressed="false" data-filter="ice">Напитки со льдом</button>
+      <button type="button" class="menu__tab" aria-pressed="false" data-filter="desserts">Десерты</button>
+      <button type="button" class="menu__tab" aria-pressed="false" data-filter="addons">Добавки</button>
     </div>
 
+    <div class="menu__category" data-category="classic">
     <h3 class="menu__subtitle">Классика</h3>
-    <div class="menu__table-wrap">
-      <table class="menu__table">
-        <thead>
-          <tr><th>Напиток</th><th>S, 250 мл</th><th>M, 350 мл</th><th>L, 450 мл</th><th>XL, 550 мл</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Капучино</td><td>200 ₽</td><td>240 ₽*</td><td>280 ₽*</td><td>320 ₽*</td></tr>
-          <tr><td>Латте</td><td>200 ₽</td><td>240 ₽*</td><td>280 ₽*</td><td>320 ₽*</td></tr>
-          <tr><td>Раф</td><td>—</td><td>280 ₽*</td><td>320 ₽*</td><td>360 ₽*</td></tr>
-          <tr><td>Флэт Уайт</td><td>240 ₽</td><td>280 ₽</td><td>320 ₽</td><td>—</td></tr>
-          <tr><td>Американо</td><td>190 ₽ (200 мл)</td><td>230 ₽ (300 мл)</td><td>270 ₽ (400 мл)</td><td>—</td></tr>
-          <tr><td>Эспрессо</td><td>190 ₽ (60 мл)</td><td>—</td><td>—</td><td>—</td></tr>
-          <tr><td>Горячий шоколад</td><td>240 ₽</td><td>280 ₽</td><td>320 ₽</td><td>360 ₽</td></tr>
-          <tr><td>Какао</td><td>210 ₽</td><td>250 ₽*</td><td>290 ₽*</td><td>330 ₽*</td></tr>
-          <tr><td>Чай</td><td>—</td><td>—</td><td>120 ₽</td><td>—</td></tr>
-          <tr><td>Матча латте</td><td>—</td><td>—</td><td>300 ₽*</td><td>—</td></tr>
-        </tbody>
-      </table>
+    <p class="menu__note menu__note--hint">Нажмите на напиток, чтобы узнать о нём больше</p>
+    <div class="menu-grid">
+      <a href="napitki/kapuchino.html" class="menu-card">
+        <img src="assets/img/kapuchino.png" alt="Капучино">
+        <span class="menu-card__title">Капучино</span>
+        <span class="menu-card__price">от 200 ₽</span>
+      </a>
+      <a href="napitki/latte.html" class="menu-card">
+        <img src="assets/img/latte.jpg" alt="Латте">
+        <span class="menu-card__title">Латте</span>
+        <span class="menu-card__price">от 200 ₽</span>
+      </a>
+      <a href="napitki/raf.html" class="menu-card">
+        <img src="assets/img/raf.png" alt="Раф">
+        <span class="menu-card__title">Раф</span>
+        <span class="menu-card__price">от 280 ₽</span>
+      </a>
+      <a href="napitki/americano.html" class="menu-card">
+        <img src="assets/img/americano.png" alt="Американо">
+        <span class="menu-card__title">Американо</span>
+        <span class="menu-card__price">от 190 ₽</span>
+      </a>
+      <a href="napitki/espresso.html" class="menu-card">
+        <img src="assets/img/espresso-new.png" alt="Эспрессо">
+        <span class="menu-card__title">Эспрессо</span>
+        <span class="menu-card__price">190 ₽</span>
+      </a>
+      <a href="napitki/flat-white.html" class="menu-card">
+        <img src="assets/img/flat-white.png" alt="Флэт Уайт">
+        <span class="menu-card__title">Флэт Уайт</span>
+        <span class="menu-card__price">от 240 ₽</span>
+      </a>
+      <a href="napitki/hot-chocolate.html" class="menu-card">
+        <img src="assets/img/hot-chocolate.png" alt="Горячий шоколад">
+        <span class="menu-card__title">Горячий шоколад</span>
+        <span class="menu-card__price">от 240 ₽</span>
+      </a>
+      <a href="napitki/kakao.html" class="menu-card">
+        <img src="assets/img/kakao.png" alt="Какао">
+        <span class="menu-card__title">Какао</span>
+        <span class="menu-card__price">от 210 ₽</span>
+      </a>
+      <a href="napitki/tea-classic.html" class="menu-card">
+        <img src="assets/img/tea-classic.png" alt="Чай">
+        <span class="menu-card__title">Чай</span>
+        <span class="menu-card__price">120 ₽</span>
+      </a>
+      <a href="napitki/matcha-latte.html" class="menu-card">
+        <img src="assets/img/matcha-latte.png" alt="Матча латте">
+        <span class="menu-card__title">Матча латте</span>
+        <span class="menu-card__price">300 ₽</span>
+      </a>
     </div>
     <p class="menu__note">* — этот напиток можно заказать со льдом. Состав напитков уточняйте у бариста.</p>
-    <div class="menu__photos menu__photos--3">
-      <img src="assets/img/latte-cloth.jpg" alt="Латте «Чашка кофе»">
-      <img src="assets/img/coffee-beans-cup.jpg" alt="Эспрессо «Чашка кофе»">
-      <img src="assets/img/cups-muffin.jpg" alt="Размеры стаканов «Чашка кофе»">
     </div>
+
+    <div class="menu__category" data-category="author">
+    <h3 class="menu__subtitle">Напитки от автора</h3>
+    <p class="menu__note menu__note--hint">Нажмите на напиток, чтобы узнать о нём больше</p>
+    <div class="menu-grid">
+      <a href="napitki/raf-coconut-plombir.html" class="menu-card">
+        <img src="assets/img/raf-coconut-plombir.png" alt="Раф «Кокосовый пломбир»">
+        <span class="menu-card__title">Раф «Кокосовый пломбир»</span>
+        <span class="menu-card__price">от 310 ₽</span>
+      </a>
+      <a href="napitki/raf-banoffee.html" class="menu-card">
+        <img src="assets/img/banana-cup.jpg" alt="Раф «Солёный баноффи»">
+        <span class="menu-card__title">Раф «Солёный баноффи»</span>
+        <span class="menu-card__price">от 310 ₽</span>
+      </a>
+      <a href="napitki/raf-bounty.html" class="menu-card">
+        <img src="assets/img/raspberry-coconut.jpg" alt="Раф «Малиновый баунти»">
+        <span class="menu-card__title">Раф «Малиновый баунти»</span>
+        <span class="menu-card__price">от 310 ₽</span>
+      </a>
+      <a href="napitki/latte-whisky.html" class="menu-card">
+        <img src="assets/img/latte-cloth.jpg" alt="Латте / капучино «Шотландский виски с пряностями»">
+        <span class="menu-card__title">Латте «Шотландский виски с пряностями»</span>
+        <span class="menu-card__price">от 310 ₽</span>
+      </a>
+      <a href="napitki/cappuccino-halva.html" class="menu-card">
+        <img src="assets/img/cappuccino-halva.png" alt="Капучино / латте «Халва»">
+        <span class="menu-card__title">Капучино / латте «Халва»</span>
+        <span class="menu-card__price">от 310 ₽</span>
+      </a>
+    </div>
+    </div>
+
+    <div class="menu__category" data-category="tea">
+    <h3 class="menu__subtitle">Чай</h3>
+    <p class="menu__note menu__note--hint">Нажмите на напиток, чтобы узнать о нём больше</p>
+    <div class="menu-grid">
+      <a href="napitki/tea-seabuckthorn.html" class="menu-card">
+        <img src="assets/img/tea-seabuckthorn.png" alt="Чай облепиха-имбирь">
+        <span class="menu-card__title">Облепиха-имбирь</span>
+        <span class="menu-card__price">от 230 ₽</span>
+      </a>
+      <a href="napitki/tea-cranberry.html" class="menu-card">
+        <img src="assets/img/tea-cranberry.png" alt="Чай клюква-можжевельник">
+        <span class="menu-card__title">Клюква-можжевельник</span>
+        <span class="menu-card__price">от 230 ₽</span>
+      </a>
+      <a href="napitki/tea-apple.html" class="menu-card">
+        <img src="assets/img/tea-apple.png" alt="Чай яблоко-корица">
+        <span class="menu-card__title">Яблоко-корица</span>
+        <span class="menu-card__price">от 230 ₽</span>
+      </a>
+    </div>
+    </div>
+
+    <div class="menu__category" data-category="ice">
+    <h3 class="menu__subtitle">Напитки со льдом</h3>
+    <p class="menu__note menu__note--hint">Нажмите на напиток, чтобы узнать о нём больше</p>
+    <div class="menu-grid">
+      <a href="napitki/bambl.html" class="menu-card">
+        <img src="assets/img/bambl.png" alt="Бамбл">
+        <span class="menu-card__title">Бамбл</span>
+        <span class="menu-card__price">от 270 ₽</span>
+      </a>
+      <a href="napitki/mojito.html" class="menu-card">
+        <img src="assets/img/mojito-new.png" alt="Мохито">
+        <span class="menu-card__title">Мохито</span>
+        <span class="menu-card__price">от 270 ₽</span>
+      </a>
+      <a href="napitki/babl-ti-kiwi.html" class="menu-card">
+        <img src="assets/img/babl-ti.png" alt="Бабл-ти киви">
+        <span class="menu-card__title">Бабл-ти киви</span>
+        <span class="menu-card__price">от 360 ₽</span>
+      </a>
+      <a href="napitki/babl-ti-strawberry.html" class="menu-card">
+        <img src="assets/img/babl-ti.png" alt="Бабл-ти клубника">
+        <span class="menu-card__title">Бабл-ти клубника</span>
+        <span class="menu-card__price">от 360 ₽</span>
+      </a>
+      <a href="napitki/espresso-tonic.html" class="menu-card">
+        <img src="assets/img/espresso-tonic.png" alt="Эспрессо-тоник">
+        <span class="menu-card__title">Эспрессо-тоник</span>
+        <span class="menu-card__price">от 260 ₽</span>
+      </a>
+      <a href="napitki/mojito-strawberry.html" class="menu-card">
+        <img src="assets/img/mojito-strawberry.png" alt="Клубничный мохито">
+        <span class="menu-card__title">Клубничный мохито</span>
+        <span class="menu-card__price">от 270 ₽</span>
+      </a>
+      <a href="napitki/lemonade.html" class="menu-card">
+        <img src="assets/img/lemonade.png" alt="Лимонад">
+        <span class="menu-card__title">Лимонад</span>
+        <span class="menu-card__price">от 270 ₽</span>
+      </a>
+      <a href="napitki/milkshake.html" class="menu-card">
+        <img src="assets/img/milkshake.png" alt="Молочный коктейль">
+        <span class="menu-card__title">Молочный коктейль</span>
+        <span class="menu-card__price">от 270 ₽</span>
+      </a>
+    </div>
+    <p class="menu__note">Добавка джус-боллы: +80 ₽ (40 г) / +110 ₽ (80 г)</p>
+    </div>
+
+    <div class="menu__category" data-category="desserts">
+    <h3 class="menu__subtitle">Десерты</h3>
+    <p class="menu__note menu__note--hint">Нажмите на десерт, чтобы узнать о нём больше</p>
+    <div class="menu-grid">
+      <a href="napitki/dessert-donut.html" class="menu-card">
+        <img src="assets/img/dessert-donut.jpg" alt="Донат">
+        <span class="menu-card__title">Донат</span>
+        <span class="menu-card__price">130 ₽</span>
+      </a>
+      <a href="napitki/dessert-waffle.html" class="menu-card">
+        <img src="assets/img/dessert-waffle.jpg" alt="Бельгийская вафля">
+        <span class="menu-card__title">Бельгийская вафля</span>
+        <span class="menu-card__price">120 ₽</span>
+      </a>
+      <a href="napitki/dessert-cookies.html" class="menu-card">
+        <img src="assets/img/dessert-cookies.png" alt="Кукис">
+        <span class="menu-card__title">Кукис</span>
+        <span class="menu-card__price">120 ₽</span>
+      </a>
+      <a href="napitki/dessert-muffin.html" class="menu-card">
+        <img src="assets/img/dessert-muffin.jpg" alt="Маффин">
+        <span class="menu-card__title">Маффин</span>
+        <span class="menu-card__price">110 ₽</span>
+      </a>
+    </div>
+    </div>
+
+    <div class="menu__category" data-category="addons">
+    <h3 class="menu__subtitle">Альтернативное молоко</h3>
+    <p class="menu__note">Кокосовое, банановое, миндальное — доплата 80 ₽</p>
 
     <h3 class="menu__subtitle">Добавки</h3>
     <div class="menu__table-wrap">
@@ -113,71 +277,7 @@
         </tbody>
       </table>
     </div>
-    <div class="menu__photos menu__photos--1">
-      <img src="assets/img/two-cups-counter.jpg" alt="Кофе навынос «Чашка кофе»">
     </div>
-
-    <h3 class="menu__subtitle">Напитки от автора</h3>
-    <div class="menu__table-wrap">
-      <table class="menu__table">
-        <thead>
-          <tr><th>Напиток</th><th>M, 350 мл</th><th>L, 450 мл</th><th>XL, 550 мл</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Раф «Кокосовый пломбир»</td><td>310 ₽</td><td>350 ₽</td><td>390 ₽</td></tr>
-          <tr><td>Раф «Солёный баноффи»</td><td>310 ₽</td><td>350 ₽</td><td>390 ₽</td></tr>
-          <tr><td>Раф «Малиновый баунти»</td><td>310 ₽</td><td>350 ₽</td><td>390 ₽</td></tr>
-          <tr><td>Латте / капучино «Шотландский виски с пряностями»</td><td>310 ₽</td><td>350 ₽</td><td>390 ₽</td></tr>
-          <tr><td>Капучино / латте «Халва»</td><td>310 ₽</td><td>350 ₽</td><td>390 ₽</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="menu__photos menu__photos--2">
-      <img src="assets/img/raspberry-coconut.jpg" alt="Раф «Малиновый баунти» «Чашка кофе»">
-      <img src="assets/img/banana-cup.jpg" alt="Авторский напиток «Чашка кофе»">
-    </div>
-
-    <h3 class="menu__subtitle">Чай</h3>
-    <div class="menu__table-wrap">
-      <table class="menu__table">
-        <thead>
-          <tr><th>Чай</th><th>M, 350 мл</th><th>L, 450 мл</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Облепиха-имбирь</td><td>230 ₽</td><td>270 ₽</td></tr>
-          <tr><td>Клюква-можжевельник</td><td>230 ₽</td><td>270 ₽</td></tr>
-          <tr><td>Яблоко-корица</td><td>230 ₽</td><td>270 ₽</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 class="menu__subtitle">Напитки со льдом</h3>
-    <div class="menu__table-wrap">
-      <table class="menu__table">
-        <thead>
-          <tr><th>Напиток</th><th>M, 350 мл</th><th>L, 450 мл</th><th>XL, 550 мл</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Бамбл</td><td>270 ₽</td><td>310 ₽</td><td>350 ₽</td></tr>
-          <tr><td>Эспрессо-тоник</td><td>260 ₽</td><td>300 ₽</td><td>340 ₽</td></tr>
-          <tr><td>Бабл-ти киви</td><td>360 ₽</td><td>400 ₽</td><td>440 ₽</td></tr>
-          <tr><td>Бабл-ти клубника</td><td>360 ₽</td><td>400 ₽</td><td>440 ₽</td></tr>
-          <tr><td>Мохито</td><td>270 ₽</td><td>310 ₽</td><td>350 ₽</td></tr>
-          <tr><td>Клубничный мохито</td><td>270 ₽</td><td>310 ₽</td><td>350 ₽</td></tr>
-          <tr><td>Лимонад (киви-яблоко, фейхоа-клубника)</td><td>270 ₽</td><td>310 ₽</td><td>350 ₽</td></tr>
-          <tr><td>Молочный коктейль (шоколад, клубника, банан, фисташка, малина, кокос)</td><td>270 ₽</td><td>310 ₽</td><td>350 ₽</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="menu__photos menu__photos--3">
-      <img src="assets/img/bubble-tea.jpg" alt="Бабл-ти «Чашка кофе»">
-      <img src="assets/img/mojito.jpg" alt="Мохито «Чашка кофе»">
-      <img src="assets/img/orange-iced.jpg" alt="Лимонад «Чашка кофе»">
-    </div>
-    <p class="menu__note">Добавка джус-боллы: +80 ₽ (40 г) / +110 ₽ (80 г)</p>
-
-    <h3 class="menu__subtitle">Альтернативное молоко</h3>
-    <p class="menu__note">Кокосовое, банановое, миндальное — доплата 80 ₽</p>
   </div>
 </section>
 
@@ -185,14 +285,14 @@
   <div class="container contacts__inner">
     <div class="contacts__info">
       <h2>Контакты</h2>
-      <p><strong>Адрес:</strong> 628405, ХМАО-Югра, г. Сургут, ул. Рыбников, д. 5</p>
+      <p><strong>Адрес:</strong> <a href="https://yandex.ru/maps/?rtext=~г.%20Сургут,%20ул.%20Рыбников,%20д.%205,%20набережная%20Олега%20Марчука" target="_blank" rel="noopener" class="address-link">628405, Ханты-Мансийский автономный округ — Югра, г. Сургут, ул. Рыбников, д. 5, набережная Олега Марчука</a></p>
       <p><strong>Часы работы:</strong><br>Пн–Чт: 11:00–23:00<br>Пт–Вс: 10:00–01:00</p>
       <p><a href="https://vk.com/club239368181" class="btn btn--vk" target="_blank" rel="noopener">Сообщество ВКонтакте — программа лояльности</a></p>
     </div>
     <div class="contacts__map">
       <iframe
         src="https://yandex.ru/map-widget/v1/?text=Сургут%2C%20ул.%20Рыбников%2C%205&z=16"
-        width="100%" height="320" frameborder="0" loading="lazy"></iframe>
+        width="100%" height="320" frameborder="0" loading="lazy" title="Карта проезда — Чашка кофе"></iframe>
     </div>
   </div>
 </section>
