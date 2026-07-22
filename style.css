@@ -1,8 +1,9 @@
 :root {
   --black: #1a1a1a;
   --white: #fdfdfb;
-  --gray: #6e6e6e;
-  --line: #e2e0db;
+  --gray: #9b948b;
+  --line: #3a3733;
+  --surface: #221f1c;
   --vk: #0077ff;
   --accent: #c8793f;
 }
@@ -11,15 +12,21 @@
 
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
-  color: var(--black);
-  background: var(--white);
+  color: var(--white);
+  background: var(--black);
   line-height: 1.5;
 }
 
 .container {
-  max-width: 880px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 40px;
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding: 0 20px;
+  }
 }
 
 a { color: inherit; }
@@ -28,7 +35,7 @@ a { color: inherit; }
 .header {
   position: sticky;
   top: 0;
-  background: var(--white);
+  background: var(--black);
   border-bottom: 1px solid var(--line);
   z-index: 10;
 }
@@ -189,7 +196,7 @@ a { color: inherit; }
 .about__mission {
   font-size: 19px;
   font-weight: 600;
-  color: var(--black) !important;
+  color: var(--white) !important;
   font-style: italic;
 }
 
@@ -202,7 +209,7 @@ a { color: inherit; }
 /* Menu */
 .menu {
   padding: 64px 0;
-  background: #f7f6f3;
+  background: var(--surface);
 }
 
 .menu h2 {
@@ -235,11 +242,11 @@ a { color: inherit; }
 }
 
 .menu__tab:hover {
-  color: var(--black);
+  color: var(--white);
 }
 
 .menu__tab.is-active {
-  color: var(--black);
+  color: var(--white);
   border-bottom-color: var(--accent);
 }
 
@@ -320,7 +327,7 @@ a { color: inherit; }
 
 .menu__table th {
   font-weight: 700;
-  border-bottom: 2px solid var(--black);
+  border-bottom: 2px solid var(--white);
 }
 
 .menu__note {
