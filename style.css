@@ -79,7 +79,7 @@ a { color: inherit; }
   position: relative;
   color: var(--white);
   text-align: center;
-  padding: 96px 0;
+  min-height: 620px;
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -88,21 +88,24 @@ a { color: inherit; }
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20,20,20,0.55) 0%, rgba(20,20,20,0.75) 100%);
+  background: linear-gradient(180deg, rgba(20,20,20,0.6) 0%, rgba(20,20,20,0.15) 30%, rgba(20,20,20,0.15) 65%, rgba(20,20,20,0.7) 100%);
 }
 
 .hero__inner {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 40px;
 }
 
-.hero__logo {
-  width: 130px;
-  height: 130px;
-  margin: 0 auto 24px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+.hero__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero__slogan {
@@ -200,8 +203,46 @@ a { color: inherit; }
   font-style: italic;
 }
 
+.features {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px;
+  margin-top: 24px;
+}
+
+.features__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+}
+
+.features__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.features__icon--1 { background: #f0c48a; }
+.features__icon--2 { background: #8ec7f0; }
+.features__icon--3 { background: #f0a3a3; }
+.features__icon--4 { background: #a3d9a5; }
+.features__icon--5 { background: #c3a3f0; }
+.features__icon--6 { background: #f0a3d0; }
+.features__icon--7 { background: #7fd6c8; }
+.features__icon--8 { background: #f0a3a3; }
+
 @media (max-width: 700px) {
   .about__inner {
+    grid-template-columns: 1fr;
+  }
+  .features {
     grid-template-columns: 1fr;
   }
 }
@@ -609,6 +650,9 @@ a { color: inherit; }
   }
   .hero__slogan {
     font-size: 26px;
+  }
+  .hero {
+    min-height: 500px;
   }
 }
 
