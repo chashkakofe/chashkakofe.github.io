@@ -74,6 +74,17 @@ a { color: inherit; }
   font-weight: 500;
 }
 
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
 /* Hero */
 .hero {
   position: relative;
@@ -645,8 +656,29 @@ a { color: inherit; }
   .contacts__inner {
     grid-template-columns: 1fr;
   }
+  .nav-toggle {
+    display: block;
+  }
   .nav {
-    gap: 14px;
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--black);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav.is-open {
+    display: flex;
+  }
+  .nav a {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav a:last-child {
+    border-bottom: none;
   }
   .hero__slogan {
     font-size: 26px;
