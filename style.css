@@ -189,11 +189,84 @@ a { color: inherit; }
   align-items: center;
 }
 
-.about__photo img {
+.about__carousel {
+  position: relative;
+}
+
+.about__carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* инерционный скролл на старых iOS */
+  scrollbar-width: none; /* Firefox — скроллбар не нужен, есть точки + свайп */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 12px;
+}
+
+.about__carousel-track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari — то же самое */
+}
+
+.about__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always; /* не проскакивать мимо кадра при быстром свайпе */
+}
+
+.about__slide img {
   width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
   border-radius: 12px;
   display: block;
-  object-fit: cover;
+}
+
+.about__carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.about__carousel-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+  transition: background 0.2s ease;
+}
+
+/* Увеличенная зона нажатия (32px) без увеличения видимого размера
+   точки — 8px сама по себе меньше рекомендуемого тап-таргета. */
+.about__carousel-dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+}
+
+.about__carousel-dot.is-active,
+.about__carousel-dot:hover,
+.about__carousel-dot:focus-visible {
+  background: var(--accent);
+}
+
+.about__carousel-dot:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__carousel-track {
+    scroll-behavior: auto;
+  }
 }
 
 .about h2 {
@@ -258,6 +331,151 @@ a { color: inherit; }
   }
 }
 
+/* Amenities */
+.amenities {
+  padding: 64px 0;
+}
+
+.amenities__title {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.amenities__grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.amenities__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.amenities__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+/* цвета — переиспользованы из пастельной палитры иконок выше (.features__icon--3/4/7/8) */
+.amenities__icon--dog { background: #f0a3a3; }
+.amenities__icon--wc { background: #a3d9a5; }
+.amenities__icon--charge { background: #7fd6c8; }
+.amenities__icon--card { background: #f0a3d0; }
+
+.amenities__caption {
+  font-size: 15px;
+  color: var(--gray);
+  max-width: 200px;
+}
+
+@media (max-width: 700px) {
+  .amenities__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 16px;
+  }
+  .amenities__caption {
+    max-width: none;
+  }
+}
+
+/* Trust — «Гости на набережной» */
+.trust {
+  padding: 64px 0;
+  background: var(--surface);
+}
+
+.trust__title {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.trust__subtitle {
+  font-size: 15px;
+  color: var(--gray);
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 32px;
+}
+
+.trust__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.trust__photo {
+  display: flex;
+  flex-direction: column;
+}
+
+.trust__photo img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+/* cup-steam.jpg почти квадратное (800×734), а пар поднимается от стакана
+   почти до верхнего края кадра. При фиксированной высоте 300px/220px и
+   object-fit: cover обрезка съедала бы почти половину высоты кадра и либо
+   пар, либо низ стакана. object-fit: contain показывает фото целиком —
+   фон совпадает с фоном секции (.trust { background: var(--surface) }),
+   поэтому поля по бокам не выглядят «рамкой». Второе фото сетки
+   (cups-carrier-tray.jpg) этот класс не затрагивает и остаётся на cover. */
+.trust__photo img.trust__photo-img--steam {
+  object-fit: contain;
+  background: var(--surface);
+}
+
+.trust__placeholder {
+  height: 260px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trust__placeholder::before {
+  content: "Место под фото";
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.trust__photo figcaption {
+  font-size: 13px;
+  color: var(--gray);
+  text-align: center;
+  margin-top: 8px;
+}
+
+@media (max-width: 700px) {
+  .trust__gallery {
+    grid-template-columns: 1fr;
+  }
+  .trust__placeholder {
+    height: 220px;
+  }
+  .trust__photo img {
+    height: 220px;
+  }
+}
+
 /* Menu */
 .menu {
   padding: 64px 0;
@@ -300,6 +518,74 @@ a { color: inherit; }
 .menu__tab.is-active {
   color: var(--white);
   border-bottom-color: var(--accent);
+}
+
+/* Тизер "Напитки от автора" (вверху блока Меню) */
+.menu__author-teaser {
+  background: rgba(200, 121, 63, 0.08);
+  border: 1px solid rgba(200, 121, 63, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.menu__author-teaser-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.menu__author-teaser-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* .tag — пилюля-бейдж, паттерн .btn (999px), уменьшенный. Фон НЕ var(--accent) напрямую:
+   белый текст на #c8793f даёт контраст ~3.2:1 — ниже WCAG AA (4.5:1) для мелкого текста.
+   #7a4620 — затемнённый вариант того же оттенка accent, контраст с --white ~7.5:1. */
+.tag {
+  display: inline-block;
+  background: #7a4620;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.menu__author-teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.menu__author-teaser-more {
+  display: inline-block;
+  font-size: 14px;
+  color: var(--gray);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
+.menu__author-teaser-more:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 700px) {
+  .menu__author-teaser {
+    padding: 16px;
+  }
+  .menu__author-teaser-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .menu__subtitle {
@@ -685,6 +971,42 @@ a { color: inherit; }
   }
   .hero {
     min-height: 500px;
+  }
+}
+
+/* Final CTA — "Возьмите кофе с собой" (перед Contacts) */
+.final-cta {
+  padding: 64px 0;
+  background: var(--surface);
+  text-align: center;
+}
+
+.final-cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.final-cta__title {
+  font-size: 26px;
+  font-weight: 700;
+  max-width: 480px;
+}
+
+/* Кнопки этого блока переиспользуют .hero__buttons (flex-ряд, center, wrap).
+   .btn--vk несёт margin-top: 8px (рассчитан на вертикальный стек в Contacts) —
+   здесь кнопка стоит в ряд рядом с другой, отступ сбрасываем только для этого блока. */
+.final-cta .btn--vk {
+  margin-top: 0;
+}
+
+@media (max-width: 700px) {
+  .final-cta {
+    padding: 48px 0;
+  }
+  .final-cta__title {
+    font-size: 22px;
   }
 }
 

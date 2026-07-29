@@ -87,7 +87,7 @@
   <div class="hero__overlay"></div>
   <div class="container hero__inner">
     <div class="hero__bottom">
-      <h1 class="hero__slogan">Кофе с собой —<br>ваш спутник прогулок</h1>
+      <h1 class="hero__slogan">Кофе с собой —<br>для двоих и всей семьи</h1>
       <p class="hero__address"><a href="https://yandex.ru/maps/?rtext=~г.%20Сургут,%20ул.%20Рыбников,%20д.%205,%20набережная%20Олега%20Марчука" target="_blank" rel="noopener" class="address-link">г. Сургут, ул. Рыбников, д. 5 · набережная Олега Марчука</a></p>
       <div class="hero__hours">
         <span>Пн–Чт: 11:00–23:00</span>
@@ -101,29 +101,70 @@
   </div>
 </section>
 
+<section id="amenities" class="amenities">
+  <div class="container">
+    <h2 class="amenities__title">Удобства</h2>
+    <ul class="amenities__grid">
+      <li class="amenities__item">
+        <span class="amenities__icon amenities__icon--dog" aria-hidden="true">🐶</span>
+        <p class="amenities__caption">Пришли всей семьёй — с собакой можно</p>
+      </li>
+      <li class="amenities__item">
+        <span class="amenities__icon amenities__icon--wc" aria-hidden="true">🚻</span>
+        <p class="amenities__caption">Долгая прогулка — рядом туалет</p>
+      </li>
+      <li class="amenities__item">
+        <span class="amenities__icon amenities__icon--charge" aria-hidden="true">🔌</span>
+        <p class="amenities__caption">Телефон сел на фото — здесь есть зарядка</p>
+      </li>
+      <li class="amenities__item">
+        <span class="amenities__icon amenities__icon--card" aria-hidden="true">💳</span>
+        <p class="amenities__caption">Оплата картой — без лишних хлопот</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="trust" class="trust">
+  <div class="container">
+    <h2 class="trust__title">Нам тоже это важно</h2>
+    <p class="trust__subtitle">То, что важно вам, важно и нам, — поэтому капхолдер бережёт руки от горячего стакана, а подстаканник на четверых помогает донести кофе для всех сразу. Здесь так работают каждый день.</p>
+
+    <div class="trust__gallery">
+      <figure class="trust__photo">
+        <img src="assets/img/cup-steam.jpg" alt="Стакан кофе с капхолдером, пар над горячим напитком" class="trust__photo-img--steam">
+        <figcaption>Капхолдер на каждый горячий стакан — чтобы держать было удобно, а не горячо</figcaption>
+      </figure>
+      <figure class="trust__photo">
+        <img src="assets/img/cups-carrier-tray.jpg" alt="Подстаканник на 4 стакана кофе для компании">
+        <figcaption>Берёте кофе на компанию — подстаканник на 4 стакана донесёт всё сразу</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section id="about" class="about">
   <div class="container about__inner">
     <div class="about__photo">
-      <img src="assets/img/kiosk-night.jpg" alt="Кофейня «Чашка кофе» на набережной">
+      <div class="about__carousel" role="group" aria-label="Фото кофейни: вечер и день с гостями">
+        <ul class="about__carousel-track" id="about-carousel-track">
+          <li class="about__slide" id="about-slide-1">
+            <img src="assets/img/kiosk-night.jpg" alt="Кофейня «Чашка кофе» на набережной вечером" loading="lazy">
+          </li>
+          <li class="about__slide" id="about-slide-2">
+            <img src="assets/img/kiosk-guests-queue.jpg" alt="Гости у окошка кофейни днём" loading="lazy">
+          </li>
+        </ul>
+        <nav class="about__carousel-dots" aria-label="Выбор фото">
+          <a href="#about-slide-1" class="about__carousel-dot is-active" aria-label="Фото 1 из 2 — вечер"></a>
+          <a href="#about-slide-2" class="about__carousel-dot" aria-label="Фото 2 из 2 — день, гости"></a>
+        </nav>
+      </div>
     </div>
     <div class="about__text">
       <h2>О нас</h2>
-      <p class="about__mission">Мы заряжаем Сургут энергией, вдохновляем на большие цели и меняем вечерние традиции
-         города к лучшему. Наш зал — это набережная под открытым небом, где в любую погоду и допоздна мы дарим вам
-         свободу и безупречный вкус любимых напитков.</p>
-      <p>Кофейня формата «кофе с собой» на набережной Олега Марчука. Без посадочных мест — зато быстро, вкусно и всегда по
-         пути на прогулку: эспрессо-тоники, лимонады, бабл-ти, молочные коктейли и десерты.</p>
-
-      <ul class="features">
-        <li class="features__item"><span class="features__icon features__icon--1">☕</span>Кофе с собой</li>
-        <li class="features__item"><span class="features__icon features__icon--2">🍩</span>Десерты</li>
-        <li class="features__item"><span class="features__icon features__icon--3">🐶</span>Можно с собакой</li>
-        <li class="features__item"><span class="features__icon features__icon--4">🚻</span>Туалет</li>
-        <li class="features__item"><span class="features__icon features__icon--5">🍵</span>Чай</li>
-        <li class="features__item"><span class="features__icon features__icon--6">🍫</span>Какао и горячий шоколад</li>
-        <li class="features__item"><span class="features__icon features__icon--7">🔌</span>Зарядка для телефона</li>
-        <li class="features__item"><span class="features__icon features__icon--8">💳</span>Оплата картой</li>
-      </ul>
+      <p class="about__mission">Кофейня формата «кофе с собой» на набережной Олега Марчука — для свиданий, семейных прогулок и особых поводов. Здесь не нужны столики: сама набережная — уже готовый зал под открытым небом, и мы рядом в любую погоду, допоздна.</p>
+      <p>Быстро и вкусно: эспрессо-тоники, лимонады, бабл-ти, молочные коктейли и десерты — найдётся и классика для взрослых, и сладкое для детей.</p>
     </div>
   </div>
 </section>
@@ -131,6 +172,31 @@
 <section id="menu" class="menu">
   <div class="container">
     <h2>Меню</h2>
+
+    <div class="menu__author-teaser">
+      <div class="menu__author-teaser-head">
+        <h3 class="menu__author-teaser-title">Напитки от автора</h3>
+        <span class="tag">Эксклюзив для повода</span>
+      </div>
+      <div class="menu__author-teaser-grid">
+        <a href="napitki/raf-coconut-plombir.html" class="menu-card menu-card--teaser">
+          <img src="assets/img/raf-coconut-plombir.jpg" alt="Раф «Кокосовый пломбир»">
+          <span class="menu-card__title">Раф «Кокосовый пломбир»</span>
+          <span class="menu-card__price">от 310 ₽</span>
+        </a>
+        <a href="napitki/latte-whisky.html" class="menu-card menu-card--teaser">
+          <img src="assets/img/latte-cloth.jpg" alt="Латте «Шотландский виски с пряностями»">
+          <span class="menu-card__title">Латте «Шотландский виски с пряностями»</span>
+          <span class="menu-card__price">от 310 ₽</span>
+        </a>
+        <a href="napitki/cappuccino-halva.html" class="menu-card menu-card--teaser">
+          <img src="assets/img/cappuccino-halva.jpg" alt="Капучино / латте «Халва»">
+          <span class="menu-card__title">Капучино «Халва»</span>
+          <span class="menu-card__price">от 310 ₽</span>
+        </a>
+      </div>
+      <a href="#menu-author" class="menu__author-teaser-more">Смотреть все напитки от автора ↓</a>
+    </div>
 
     <div class="menu__tabs">
       <button type="button" class="menu__tab is-active" aria-pressed="true" data-filter="all">Все</button>
@@ -200,7 +266,7 @@
     <p class="menu__note">* — этот напиток можно заказать со льдом. Состав напитков уточняйте у бариста.</p>
     </div>
 
-    <div class="menu__category" data-category="author">
+    <div id="menu-author" class="menu__category" data-category="author">
     <h3 class="menu__subtitle">Напитки от автора</h3>
     <p class="menu__note menu__note--hint">Нажмите на напиток, чтобы узнать о нём больше</p>
     <div class="menu-grid">
@@ -349,6 +415,16 @@
         </tbody>
       </table>
     </div>
+    </div>
+  </div>
+</section>
+
+<section id="take-with-you" class="final-cta">
+  <div class="container final-cta__inner">
+    <h2 class="final-cta__title">Возьмите кофе с собой — и оставайтесь на связи</h2>
+    <div class="hero__buttons">
+      <a href="https://yandex.ru/maps/?rtext=~г.%20Сургут,%20ул.%20Рыбников,%20д.%205,%20набережная%20Олега%20Марчука" target="_blank" rel="noopener" class="btn btn--accent">Маршрут на карте</a>
+      <a href="https://vk.com/club239368181" target="_blank" rel="noopener" class="btn btn--vk">Сообщество ВКонтакте</a>
     </div>
   </div>
 </section>
