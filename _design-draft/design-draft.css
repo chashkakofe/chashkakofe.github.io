@@ -1,0 +1,268 @@
+/* ============================================================
+   ДИЗАЙН-ЧЕРНОВИК — стили ТОЛЬКО для новых блоков
+   («Удобства», «Атмосферное доверие», тизер «Напитки от автора»,
+   финальный CTA «Возьмите с собой»).
+
+   Не боевой файл. Подключается ПОСЛЕ ../style.css в
+   _design-draft/index.html и ничего в style.css не переопределяет
+   на уровне токенов — только добавляет новые классы.
+
+   Токены (--black, --white, --gray, --line, --surface, --accent, --vk)
+   взяты из существующего site/style.css как есть, см.
+   docs/design-system.md. Брейкпоинт — тот же, что в проекте: 700px.
+
+   Порядок написания — как в существующем style.css: база = широкий
+   экран, затем @media (max-width: 700px) переопределяет для мобильного.
+   Экран 390px спроектирован и проверен первым (mobile-first по процессу),
+   но код в порядке проекта — так DEVELOPER сможет перенести блок в
+   style.css без смены методологии остального файла.
+   ============================================================ */
+
+/* ---------- Удобства ---------- */
+
+.amenities {
+  padding: 64px 0;
+}
+
+.amenities__title {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.amenities__grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.amenities__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.amenities__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+/* цвета — переиспользованы из существующей пастельной палитры иконок
+   в style.css (.features__icon--3/4/7/8), новых цветов не вводится */
+.amenities__icon--dog { background: #f0a3a3; }
+.amenities__icon--wc { background: #a3d9a5; }
+.amenities__icon--charge { background: #7fd6c8; }
+.amenities__icon--card { background: #f0a3d0; }
+
+.amenities__caption {
+  font-size: 15px;
+  color: var(--gray);
+  max-width: 200px;
+}
+
+@media (max-width: 700px) {
+  .amenities__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 16px;
+  }
+  .amenities__caption {
+    max-width: none;
+  }
+}
+
+/* ---------- Атмосферное доверие ---------- */
+
+.trust {
+  padding: 64px 0;
+  background: var(--surface);
+}
+
+.trust__title {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.trust__subtitle {
+  font-size: 15px;
+  color: var(--gray);
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 32px;
+}
+
+/* Триптих под 3 равнозначных фото (подтверждено: реальных фото будет ровно 3,
+   без крупного/акцентного — все три одного размера, без цифр/рейтингов). */
+.trust__gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.trust__photo {
+  display: flex;
+  flex-direction: column;
+}
+
+.trust__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.trust__placeholder {
+  height: 260px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trust__placeholder::before {
+  content: "Место под фото";
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.trust__photo figcaption {
+  font-size: 13px;
+  color: var(--gray);
+  text-align: center;
+  margin-top: 8px;
+}
+
+@media (max-width: 700px) {
+  .trust__gallery {
+    /* На мобильном — стопкой в один столбец, каждое фото на всю ширину:
+       для 3 фото это читается лучше, чем сжатие в 2 колонки. */
+    grid-template-columns: 1fr;
+  }
+  .trust__placeholder {
+    height: 220px;
+  }
+}
+
+/* ---------- Тизер "Напитки от автора" (вверху блока Меню) ---------- */
+
+.menu__author-teaser {
+  background: rgba(200, 121, 63, 0.08);
+  border: 1px solid rgba(200, 121, 63, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.menu__author-teaser-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.menu__author-teaser-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* .tag — пилюля-бейдж, тот же паттерн, что .btn (999px, --accent), уменьшенный.
+   ВАЖНО: фон НЕ var(--accent) напрямую — белый текст на #c8793f даёт контраст
+   ~3.2:1, ниже порога WCAG AA для мелкого текста (нужно 4.5:1, а 11-12px bold
+   не дотягивает до порога "крупного текста" 3:1). #7a4620 — затемнённый
+   вариант того же оттенка accent (не новый цвет из другой палитры), даёт
+   контраст с --white ~7.5:1 — с запасом выше AA. Правится только здесь,
+   .btn--accent и остальные использования --accent не тронуты. */
+.tag {
+  display: inline-block;
+  background: #7a4620;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.menu__author-teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.menu__author-teaser-more {
+  display: inline-block;
+  font-size: 14px;
+  color: var(--gray);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
+.menu__author-teaser-more:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 700px) {
+  .menu__author-teaser {
+    padding: 16px;
+  }
+  .menu__author-teaser-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- Финальный CTA "Возьмите с собой" ---------- */
+
+.final-cta {
+  padding: 64px 0;
+  background: var(--surface);
+  text-align: center;
+}
+
+.final-cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.final-cta__title {
+  font-size: 26px;
+  font-weight: 700;
+  max-width: 480px;
+}
+
+/* Кнопки этого блока используют существующий .hero__buttons (flex-ряд,
+   center, wrap) — переиспользование готового паттерна, без нового класса.
+   .btn--vk в style.css несёт margin-top: 8px (рассчитан на вертикальный
+   стек под текстом в Contacts) — тут кнопка стоит в ряд рядом с другой,
+   этот отступ сбрасываем только в рамках данного блока. */
+.final-cta .btn--vk {
+  margin-top: 0;
+}
+
+@media (max-width: 700px) {
+  .final-cta {
+    padding: 48px 0;
+  }
+  .final-cta__title {
+    font-size: 22px;
+  }
+}

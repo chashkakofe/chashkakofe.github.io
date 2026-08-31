@@ -1,0 +1,138 @@
+/* ============================================================
+   ЧЕРНОВИК — правила ТОЛЬКО для двух изменённых блоков:
+
+   1) .about__photo — было статичное <img>, теперь карусель
+      (.about__carousel) из 2 фото. Правило ".about__photo img" из
+      ../style.css (строка ~192) ЗАМЕНИТЬ правилом ".about__slide img"
+      ниже — НЕ дополнять оба: у обоих селекторов одинаковая
+      специфичность (0,1,1) и оба матчат один и тот же <img> (он
+      остаётся потомком .about__photo), так что при добавлении
+      нового правила ПОСЛЕ старого без замены — сработает, но это
+      хрупко (зависит от порядка в файле) и оставляет мёртвый код.
+      Проще и понятнее — удалить старое ".about__photo img" и
+      использовать новое ".about__slide img".
+
+   2) .trust__gallery / .trust__photo img — было 3 колонки
+      (repeat(3, 1fr), высота фото 260px/220px), теперь 2 колонки
+      (repeat(2, 1fr), высота фото увеличена до 300px на широком
+      экране — на двух более широких колонках старая высота 260
+      давала более плоский, "растянутый" кроп; мобильная высота
+      220px, стопка в 1 колонку — БЕЗ изменений). Это ЗАМЕНА
+      существующих правил .trust__gallery/.trust__photo img в
+      style.css (строки ~341-358 и ~383-393), не добавление второго
+      набора.
+
+   Токены — как обычно, из ../style.css (--black/--white/--gray/--line/
+   --surface/--accent/--vk), брейкпоинт 700px — новых не вводится.
+   ============================================================ */
+
+/* ---------- About — карусель (2 фото) ---------- */
+
+.about__carousel {
+  position: relative;
+}
+
+.about__carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* инерционный скролл на старых iOS */
+  scrollbar-width: none; /* Firefox — скроллбар не нужен, есть точки + свайп */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 12px;
+}
+
+.about__carousel-track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari — то же самое */
+}
+
+.about__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always; /* не проскакивать мимо кадра при быстром свайпе */
+}
+
+.about__slide img {
+  width: 100%;
+  /* Оба фото уже в соотношении 3:4 (kiosk-night.jpg 1086×1448,
+     kiosk-guests-queue.jpg 896×1195) — aspect-ratio просто фиксирует
+     то соотношение, которое и так получалось у одиночного фото раньше
+     (width:100%, без явной height, natural ratio). Кропа не добавляет. */
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.about__carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.about__carousel-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+  transition: background 0.2s ease;
+}
+
+/* Увеличенная зона нажатия (32px) без увеличения видимого размера
+   точки — 8px сама по себе меньше рекомендуемого тап-таргета. */
+.about__carousel-dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+}
+
+.about__carousel-dot.is-active,
+.about__carousel-dot:hover,
+.about__carousel-dot:focus-visible {
+  background: var(--accent);
+}
+
+.about__carousel-dot:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__carousel-track {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Trust — 2 фото вместо 3 ---------- */
+
+.trust__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* было repeat(3, 1fr) */
+  gap: 16px;
+}
+
+.trust__photo img {
+  width: 100%;
+  height: 300px; /* было 260px — чуть выше на двух широких колонках вместо трёх узких */
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .trust__gallery {
+    grid-template-columns: 1fr; /* без изменений — стопка на мобильном */
+  }
+  .trust__photo img {
+    height: 220px; /* без изменений */
+  }
+}

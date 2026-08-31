@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ЧЕРНОВИК — О нас (карусель) + Нам тоже это важно (2 фото)</title>
+<!--
+  ЭТО ДИЗАЙН-ЧЕРНОВИК, НЕ БОЕВОЙ ФАЙЛ. Показывает ТОЛЬКО 2 изменённых
+  блока: «О нас» (карусель из 2 фото) и «Нам тоже это важно» (раскладка
+  под 2 фото вместо 3). Header, hero, amenities, menu, contacts, footer —
+  не включены, они не меняются в этой задаче.
+
+  Стили: ../style.css (боевые токены и текущие правила .about/.trust —
+  без изменений в этом файле) + ./about-carousel-trust-update.css
+  (новые/изменённые правила для двух блоков).
+
+  ВАЖНО для DEVELOPER при переносе в боевой style.css — см. комментарий
+  в начале about-carousel-trust-update.css: правило .about__photo img
+  нужно ЗАМЕНИТЬ (не дополнить) новыми правилами, иначе будет конфликт
+  одинаковой специфичности селекторов. Блок .trust__gallery/.trust__photo
+  тоже ЗАМЕНИТЬ, не дублировать.
+
+  JS: карусель работает БЕЗ JavaScript в базовом виде — точки это
+  <a href="#about-slide-N">, клик скроллит трек за счёт нативного
+  scroll-snap + переход по якорю. Подсветка активной точки при свайпе
+  (не через клик) без JS не работает — это отдельная, необязательная
+  для функциональности задача для DEVELOPER, см. отчёт DESIGNER.
+-->
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="about-carousel-trust-update.css">
+</head>
+<body style="padding: 40px 0;">
+
+<!-- ============================================================
+     TRUST — «Нам тоже это важно», теперь 2 фото вместо 3
+     (kiosk-guests-queue.jpg уехало в блок «О нас»).
+     Текст блока — ФИНАЛЬНЫЙ, без изменений здесь.
+     Открытый вопрос по тексту подводки — см. отчёт DESIGNER, не решать
+     здесь и не переписывать самостоятельно.
+     ============================================================ -->
+<section id="trust" class="trust">
+  <div class="container">
+    <h2 class="trust__title">Нам тоже это важно</h2>
+    <p class="trust__subtitle">К нашему окошку каждый день приходят семьи, компании, соседи по набережной. То, что важно вам, важно и нам, — поэтому капхолдер бережёт руки от горячего стакана, а подстаканник на четверых помогает донести кофе для всех сразу. Здесь так работают каждый день.</p>
+
+    <div class="trust__gallery">
+      <figure class="trust__photo">
+        <img src="../assets/img/cup-sleeve.jpg" alt="Капхолдер на бумажном стаканчике с горячим кофе">
+        <figcaption>Капхолдер на каждый горячий стакан — чтобы держать было удобно, а не горячо</figcaption>
+      </figure>
+      <figure class="trust__photo">
+        <img src="../assets/img/cups-carrier-tray.jpg" alt="Подстаканник на 4 стакана кофе для компании">
+        <figcaption>Берёте кофе на компанию — подстаканник на 4 стакана донесёт всё сразу</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT — «О нас», фото теперь карусель из 2 кадров: вечер
+     (kiosk-night.jpg, было и раньше) + день с гостями
+     (kiosk-guests-queue.jpg, переехало из блока Trust).
+     Текст блока НЕ меняется (тот же финальный текст, что уже в боевом
+     index.html) — приведён здесь только для контекста раскладки.
+     ============================================================ -->
+<section id="about" class="about">
+  <div class="container about__inner">
+    <div class="about__photo">
+      <div class="about__carousel" role="group" aria-label="Фото кофейни: вечер и день с гостями">
+        <ul class="about__carousel-track" id="about-carousel-track">
+          <li class="about__slide" id="about-slide-1">
+            <img src="../assets/img/kiosk-night.jpg" alt="Кофейня «Чашка кофе» на набережной вечером" loading="lazy">
+          </li>
+          <li class="about__slide" id="about-slide-2">
+            <img src="../assets/img/kiosk-guests-queue.jpg" alt="Гости у окошка кофейни днём" loading="lazy">
+          </li>
+        </ul>
+        <nav class="about__carousel-dots" aria-label="Выбор фото">
+          <a href="#about-slide-1" class="about__carousel-dot is-active" aria-label="Фото 1 из 2 — вечер"></a>
+          <a href="#about-slide-2" class="about__carousel-dot" aria-label="Фото 2 из 2 — день, гости"></a>
+        </nav>
+      </div>
+    </div>
+    <div class="about__text">
+      <h2>О нас</h2>
+      <p class="about__mission">Кофейня формата «кофе с собой» на набережной Олега Марчука — для свиданий, семейных прогулок и особых поводов. Здесь не нужны столики: сама набережная — уже готовый зал под открытым небом, и мы рядом в любую погоду, допоздна.</p>
+      <p>Быстро и вкусно: эспрессо-тоники, лимонады, бабл-ти, молочные коктейли и десерты — найдётся и классика для взрослых, и сладкое для детей.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
